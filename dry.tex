@@ -1,0 +1,36 @@
+\documentclass[4]{Algo_template}
+\begin{document}
+\begin{center}
+    \section*{HW4 - Dry Part}
+\end{center}
+\subsection*{Section A:}
+\begin{enumerate}
+    \item The symbol \('\) is necessary to prevent the interpreter from evaluating the arguments
+    \(EXP\) and \(A\) before passing them to the \(EVAL\) function. \newline
+    Without it, Lisp would evaluate \(EXP\) and \(A\) as variables and look for their values 
+    but the \('\) symbol lets them pass as \(S-\)expressions.\
+    \item The parameter \(A\) is the a list of key-value pairs so that \(EVAL\) knows to associate
+    symbols to values in \(EXP\). \newline
+    For example: \newline
+    (eval 'x '((x . a) (y . b))) means Lisp will search \(A = \) ((x . a) (y . b)) for the value 
+    of x and evaluate \(EXP = \) x accordingly which means \(eval\)'s return value will be a, 
+    because that is the value for the key x in \(A\).
+\end{enumerate}
+\subsection*{Section B:}
+The following code should be inserted where we take care of CAR, CDR, QUOTE, etc..
+\begin{lstlisting}
+((EQ (CAR E) (QUOTE SWAP))
+ (CONS (CDR (EVAL (CADR E) A)) (CAR (EVAL (CADR E) A))))
+\end{lstlisting}
+\subsection*{Section C:}
+The following code should be inserted where we take care of CAR, CDR, QUOTE, etc..
+\begin{lstlisting}
+((EQ (CAR E) (QUOTE MAPALL))
+ ((LABEL MAPALLAUX (LAMBDA (F L)
+      (COND ((NULL L) NIL)
+            (T (CONS (EVAL (CONS F (CONS (CAR L) NIL)) A)
+                     (MAPALLAUX F (CDR L)))))))
+  (CADR E)
+  (EVAL (CADDR E) A)))
+\end{lstlisting}
+\end{document}
