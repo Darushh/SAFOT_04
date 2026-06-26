@@ -1,5 +1,10 @@
 \documentclass[4]{Algo_template}
 \begin{document}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.5]{meme.png}
+\end{figure}
+\pagebreak
 \begin{center}
     \section*{HW4 - Dry Part}
 \end{center}
@@ -26,10 +31,10 @@ The following code should be inserted where we take care of CAR, CDR, QUOTE, etc
 The following code should be inserted where we take care of CAR, CDR, QUOTE, etc..
 \begin{lstlisting}
 ((EQ (CAR E) (QUOTE MAPALL))
- ((LABEL MAPALLAUX (LAMBDA (F L)
+ ((LABEL HELPMAP (LAMBDA (F L)
       (COND ((NULL L) NIL)
             (T (CONS (EVAL (CONS F (CONS (CAR L) NIL)) A)
-                     (MAPALLAUX F (CDR L)))))))
+                     (HELPMAP F (CDR L)))))))
   (CADR E)
   (EVAL (CADDR E) A)))
 \end{lstlisting}

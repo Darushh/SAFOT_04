@@ -16,6 +16,7 @@
 \RequirePackage[makeroom]{cancel}
 \RequirePackage[a4paper,margin=1in]{geometry}
 \usepackage{tikz}
+\usepackage{float}
 \usepackage{fontspec} 
 \usepackage{listings}
 \usepackage{xcolor} 
@@ -62,6 +63,5 @@
 \AtBeginDocument{%
     \AddToHook{begindocument/end}{%
         \maketitle
-        \pagebreak
     }
 }
